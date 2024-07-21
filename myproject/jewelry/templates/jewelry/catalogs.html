@@ -1,0 +1,4 @@
+{% for cat in cats %}
+    <h1>{{cat.title}}</h1>
+    <a class="btnSpisok" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+{% endfor %}

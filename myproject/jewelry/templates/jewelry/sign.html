@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+
+{% csrf_token %}
+<div class="container_login forms">
+    <div class="form login">
+        <div class="form-content">
+            <h1>Вход</h1>
+            <form action="" method="POST">
+                <div class="field input-field">
+                    <input type="email" placeholder="Email" class="input">
+                </div>
+                <div class="field input-field">
+                    <input type="password" placeholder="Пароль" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+                <div class="form-link">
+                    <a href="" class="forgot-pass">Забыли пароль?</a>
+                </div>
+                <div class="field button-field">
+                    <button type="submit">Войти</button>
+                </div>
+            </form>
+            <div class="form-link">
+                <span>Нет аккаунта? <a href="#" class="link signup-link">Зарегестрироваться</a></span>
+            </div>
+        </div>
+    </div>
+    <!-- Signup Form -->
+    <div class="form signup">
+        <div class="form-content">
+            <h1>Регистрация</h1>
+            <form action="" meyhod="POST">
+                <div class="field input-field">
+                    <input type="name" placeholder="Имя" class="input">
+                </div>
+                <div class="field input-field">
+                    <input type="name" placeholder="Фамилия" class="input">
+                </div>
+                <div class="field input-field">
+                    <input type="email" placeholder="Email" class="input">
+                </div>
+                <div class="field input-field">
+                    <input type="password" placeholder="Придумайте пароль" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+                <div class="field input-field">
+                    <input type="password" placeholder="Подтвердите пароль" class="password_confirm">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+                <div class="field button-field">
+                    <button type="submit">Зарегестрироваться</button>
+                </div>
+            </form>
+            <div class="form-link">
+                <span>Уже есть аккаунт? <a href="#" class="link login-link">Войти</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

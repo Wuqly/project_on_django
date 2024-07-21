@@ -1,0 +1,56 @@
+{% load static %}
+{% load jewelry_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'jewelry/css/style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>{{ title }}</title>
+</head>
+
+
+<header>
+    <a class="logo" href="{% url 'home' %}"><img src="{% static 'jewelry/images/logo2.png' %}" alt="Логотип" width="10%"></a>
+    <nav class="navigation">
+        {% for m in menu %}
+            {% if m.url_name == 'catalog' %}
+                <div class="dropdown">
+                    <a class="btn{% if forloop.last %}last{% endif %}" href="{{m.url_name}}">{{ m.title }}</a>
+                    <div class="dropdown-content">
+                        {% show_catalog %}
+                    </div>
+                </div>
+            {% else %}
+                <a class="btn {% if forloop.last %}last{% endif %}" href="{{m.url_name}}">{{ m.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+</header>
+
+<body>
+
+        {% block content %} {% endblock %}
+
+</body>
+
+<footer class="footer">
+    <div class="waves">
+        <div class="wave" id="wave1"></div>
+    </div>
+
+    <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="" target="_blank">
+                <img src="{% static 'jewelry/images/rus-vk-02-svgrepo-com.svg'%}"></a>
+        </li>
+        <li class="social-icon__item"><a class="social-icon__link" href="" target="_blank">
+                <img src="{% static 'jewelry/images/telegram-svgrepo-com (2).svg'%}"></a>
+        </li>
+    </ul>
+    <p>&copy;2024 Wuqly | Все права защищены</p>
+
+</footer>
+
+<script src="{% static 'jewelry/js/sign.js' %}"></script>
+</html>

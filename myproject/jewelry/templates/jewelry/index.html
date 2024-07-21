@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% for el in cards %}
+    {% if el.is_published%}
+
+        <div class="card">  
+            {% if el.image %}
+                <a href="{{ el.get_absolute_url }}"><img src="{{ el.image.url }}" alt="Photo"></a>
+            {% endif %}
+            <div class="description">
+                <a href="{{ el.get_absolute_url }}"><h3>{{el.title|upper}}</h3></a>
+                <p>{{el.type}} {{el.quantity}} шт.</p>
+                <p>Цена: {{el.price}} ₽</p>
+            </div>
+        </div>
+
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
