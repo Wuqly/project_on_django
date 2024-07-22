@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 
 @admin.register(Jewelry)
 class JewelryAdmin(admin.ModelAdmin):
-    fields = ['image','photo','title','slug','type','quantity', 'price', 'is_published']
+    fields = ['image','image_2','photo','title','description','slug','type','quantity','price','type_metall','weight','size','test','is_published']
     readonly_fields = ['photo']
     prepopulated_fields = {'slug':('title', )}
     list_display = ('id','photo','title','slug','type','quantity', 'price', 'is_published')

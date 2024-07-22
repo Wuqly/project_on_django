@@ -17,7 +17,7 @@ eyeIcon.addEventListener("click", () => {
 
 links.forEach(link => {
 link.addEventListener("click", e => {
-  e.preventDefault(); 
+  e.preventDefault(); //preventing form submit
   forms.classList.toggle("show-signup");
 });
 });

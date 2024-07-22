@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{card.title}}</h1>
 
-{{card.title|linebreaks}}
+<div class="jewelry-container">
+    <div class="jewelry-item">
+        <div class="images">
+            {% if card.image %}
+            <img src="{{card.image.url}}" alt="Image">
+            {% endif %}
+            {% if card.image_2 %}
+            <img src="{{card.image_2.url}}" alt="Image 2">
+            {% endif %}
+        </div>
+        <div class="details">
+            <h2>{{card.title|lower|capfirst}}</h2>
+            <p><strong>Цена:</strong> ₽{{card.price}}</p>
+            <p><strong>Описание:</strong></p>
+            <h2>Характеристики</h2>
+            <p><strong>Тип металла: </strong>{{card.type_metall}}</p>
+            <p><strong>Вес: </strong>{{card.weight}} грамма</p>
+            <p><strong>Размер: </strong>{{card.size}}</p>
+            <p><strong>Проба: </strong>{{card.test}}</p>
+            <p><strong>Описание: </strong>{{card.description}}</p>
+        </div>
+    </div>
+    <!-- Add more jewelry items below -->
+</div>
+
 {% endblock %}

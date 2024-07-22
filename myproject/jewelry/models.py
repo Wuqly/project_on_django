@@ -4,7 +4,6 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 
-
 def translit_to_eng(s: str) -> str:
     d = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
          'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i', 'к': 'k',
@@ -23,18 +22,24 @@ class Jewelry(models.Model):
         DRAFT = 0, 'Черновик'
         PUBLISHED = 1, 'Опубликовано'
 
-    image = models.ImageField(upload_to="photos/%Y/%m/%d/", default=None, blank=True, null=True, verbose_name='Фото')
+    image = models.ImageField(upload_to="photos/%Y/%m/%d/", default=None, blank=True, null=True, verbose_name='Фото №1')
+    image_2 = models.ImageField(upload_to="photos/%Y/%m/%d/", default=None, blank=True, null=True, verbose_name='Фото №2')
     title = models.CharField(max_length=250, verbose_name='Название')
     slug = models.SlugField(max_length=250, unique=True, db_index=True, verbose_name='Slug')
     type = models.ForeignKey('Types',on_delete=models.PROTECT, verbose_name='Тип изделия')
     quantity = models.IntegerField(verbose_name='Количество')
     price = models.CharField(max_length=50, verbose_name='Цена')
+    type_metall = models.CharField(max_length=250, verbose_name='Тип металла',default=None, blank=True, null=True)
+    weight = models.CharField(max_length=250, verbose_name='Вес',default=None, blank=True, null=True)
+    size = models.CharField(max_length=250, verbose_name='Размер',default=None, blank=True, null=True)
+    test = models.IntegerField(verbose_name='Проба',default=None, blank=True, null=True)
+    description = models.CharField(max_length=400, verbose_name='Описание',default=None, blank=True, null=True)
     is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
                                     default=Status.DRAFT, verbose_name='Статус')
 
 
     objects = models.Manager()
-    publiched = PublishedManadger()
+    published = PublishedManadger()
 
     def __str__(self):
         return self.title

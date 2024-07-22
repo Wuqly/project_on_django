@@ -10,13 +10,24 @@ class AddJewelryForm(forms.ModelForm):
     quantity = forms.IntegerField(label='Количество')
     price = forms.CharField(max_length=200, label='Цена')
     is_published = forms.BooleanField(label='Статус', initial=True)''' 
-
+    
+    image = forms.ImageField(required=False,label='Фото №1')
+    image_2 = forms.ImageField(required=False,label='Фото №2')
     type = forms.ModelChoiceField(queryset=Types.objects.all(), label='Тип товара', empty_label='Тип не выбран')
     class Meta:
         model = Jewelry
-        fields = ['image','title','slug','type','quantity','price','is_published']
+        fields = ['image','image_2','title','description','slug','type','quantity','price','type_metall','weight','size','test','is_published']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
+            'description': forms.TextInput(attrs={'class': 'form-input'}),
+            'slug': forms.TextInput(attrs={'class': 'form-input'}),
+            'type': forms.TextInput(attrs={'class': 'form-input'}),
+            'quantity': forms.TextInput(attrs={'class': 'form-input'}),
+            'price': forms.TextInput(attrs={'class': 'form-input'}),
+            'type_metall': forms.TextInput(attrs={'class': 'form-input'}),
+            'weight': forms.TextInput(attrs={'class': 'form-input'}),
+            'size': forms.TextInput(attrs={'class': 'form-input'}),
+            'test': forms.TextInput(attrs={'class': 'form-input'}),
         }
 
         labels = {'slug': 'URL'}
