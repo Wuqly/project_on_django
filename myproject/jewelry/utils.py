@@ -9,6 +9,7 @@ menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Войти', 'url_name': 'login'}]
 
 class DataMixin:
+    paginate_by = 3
     title_page = None
     extra_context = {}
 
@@ -21,6 +22,7 @@ class DataMixin:
 
         if 'catalog' not in self.extra_context:
             self.extra_context['catalog'] = catalog
+
     
     def get_mixin_context(self, context, **kwargs):
         context['menu'] = menu

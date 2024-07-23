@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.JewelryHome.as_view(), name = 'home'),
     path('about/', views.about, name = 'about'),
     path('catalog/<slug:cat_slug>/', views.JewelryCatalog.as_view(), name = 'catalog'),
+    path('catalog/', views.Catalog.as_view(), name = 'catalog'),
     path('contact/', views.contact, name = 'contact'),
     path('login/', views.login, name = 'login'),
     path('add_product/', views.AddProduct.as_view(), name = 'add_product'),

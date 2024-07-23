@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container_main">
+    {% for cat in catalog %}
+        {% if cat.name %}
+            <div class="catalog-item">
+                <a href="{{ cat.get_absolute_url }}">
+                        {% if cat.image %}
+                        <img src="{{cat.image.url}}" alt="Jewelry 1">
+                        {% endif %}
+                    <h2>{{cat.name}}</h2>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

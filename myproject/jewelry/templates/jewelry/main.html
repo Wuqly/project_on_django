@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
+
 <div class="container_main">
-{% for cat in catalog %}
-{% if cat.name %}
-<div class="catalog-item">
-  <a href="{{ cat.get_absolute_url }}">
-      {% if cat.image %}
-      <img src="{{cat.image.url}}" alt="Jewelry 1">
+  {% for cat in catalog %}
+      {% if cat.name %}
+          <div class="catalog-item">
+              <a href="{{ cat.get_absolute_url }}">
+                      {% if cat.image %}
+                      <img src="{{cat.image.url}}" alt="Jewelry 1">
+                      {% endif %}
+                  <h2>{{cat.name}}</h2>
+              </a>
+          </div>
       {% endif %}
-      <h3>{{cat.name}}</h3>
-  </a>
-</div>
-{% endif %}
-{% endfor %}
+  {% endfor %}
 </div>
 
 <h1>Весь товар</h1>
@@ -36,6 +39,7 @@
   {% endif %}
   {% endfor %}
 </div>
-
-
 {% endblock %}
+
+
+

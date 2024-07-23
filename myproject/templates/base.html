@@ -17,13 +17,13 @@
         {% for m in menu %}
             {% if m.url_name == 'catalog' %}
                 <div class="dropdown">
-                    <a class="btn{% if forloop.last %}last{% endif %}" href="{{m.url_name}}">{{ m.title }}</a>
+                    <a class="btn" href="{{m.url_name}}">{{ m.title }}</a>
                     <div class="dropdown-content">
                         {% show_catalog %}
                     </div>
                 </div>
             {% else %}
-                <a class="btn {% if forloop.last %}last{% endif %}" href="{{m.url_name}}">{{ m.title }}</a>
+                <a class="btn" href="{{m.url_name}}">{{ m.title }}</a>
             {% endif %}
         {% endfor %}
     </nav>
@@ -31,7 +31,10 @@
 
 <body>
 
-        {% block content %} {% endblock %}
+    {% block content %} {% endblock %}
+
+    {% block navigation %} {% endblock %}
+
 
 </body>
 

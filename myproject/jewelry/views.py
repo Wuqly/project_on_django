@@ -4,6 +4,7 @@ from django.urls import reverse, reverse_lazy
 from django.template.loader import render_to_string
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView, UpdateView
+from django.core.paginator import Paginator
 
 from .forms import AddJewelryForm, UploadFileForm
 from .models import Jewelry, Types, UploadFiles
@@ -27,12 +28,20 @@ class JewelryHome(DataMixin, ListView):
         return Jewelry.published.all().order_by('type')
 
 
+class Catalog(DataMixin, ListView):
+    template_name = 'jewelry/catalog.html'
+    context_object_name = 'cards'
+    title_page = 'Каталог'
+
+    def get_queryset(self):
+        return Jewelry.published.all().order_by('type')
+
 
 class ShowCard(DataMixin,DetailView):
     template_name = 'jewelry/card.html'
     slug_url_kwarg = 'card_slug'
     context_object_name = 'card'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return self.get_mixin_context(context, title = context['card'].title)
@@ -46,14 +55,12 @@ def handle_uploaded_file(f):
             destination.write(chunk)
 
 def about(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            fp = UploadFiles(file=form.cleaned_data['file'])
-            fp.save()
-    else:
-        form = UploadFileForm()
-    return render(request, 'jewelry/about.html', {'title': 'О нас', 'form': form})
+    contact_list = Jewelry.objects.all()
+    paginator = Paginator(contact_list, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'jewelry/about.html', {'title': 'О нас', 'page_obj': page_obj})
 
 
 def page_not_found(request, exception):
@@ -93,8 +100,6 @@ class UpdateProduct(DataMixin, UpdateView):
     template_name = 'jewelry/add_product.html'
     success_url =  reverse_lazy('home')
     title_page = 'Редактирование товара'
-
-
 
 
 

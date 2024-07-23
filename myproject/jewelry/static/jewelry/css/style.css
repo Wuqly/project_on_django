@@ -18,9 +18,10 @@ body {
 .container {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 350px);
     justify-content: center;
-    min-height: calc(100vh - 0px);
+    justify-items: center;
+    min-height: calc(100vh - 192px);
     padding: 20px 60px;
     gap: 20px;
 }
@@ -62,7 +63,7 @@ body {
 /* header */
 header img {
     border-radius: 100px;
-    width: 117px;
+    width: 160px;
 }
 
 header {
@@ -76,8 +77,8 @@ header {
 
 header .logo {
     border-radius: 150px;
-    width: 117px;
-    height: 117px;
+    width: 160px;
+    height: 160px;
 }
 
 .navigation {
@@ -86,7 +87,7 @@ header .logo {
 
 .navigation .btn {
     position: relative;
-    font-size: 1.1em;
+    font-size: 1.4em;
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-weight: 500;
@@ -133,6 +134,7 @@ header .logo {
     text-decoration: none;
     display: block;
     width: 100%;
+    font-size: 1.4em;
 }
 
 .dropdown-content .btnSpisok:hover {
@@ -154,7 +156,7 @@ header .logo {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1014px) {
     .container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -172,9 +174,15 @@ header .logo {
         width: 100%;
         height: auto;
     }
+    .navigation .btn {
+        font-size: 1.1em;
+    }
+    .dropdown-content .btnSpisok {
+        font-size: 1.1em;
+    }
 }
 
-@media (max-width: 869px) {
+@media (max-width: 896px) {
 
   .container {
     grid-template-columns: repeat(1, 1fr);
@@ -195,8 +203,13 @@ header {
 
 .navigation .btn {
     margin-inline: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     
+}
+
+.dropdown {
+    margin-inline: 30px;
+    margin-bottom: 5px;
 }
 
 }
@@ -241,7 +254,7 @@ header {
 .container_main {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 10px;
   padding: 20px;
   background: #fff;
 }
@@ -253,7 +266,6 @@ header {
 .catalog-item a {
   text-decoration: none;
   color: inherit;
-  display: block;
   transition: transform 0.3s;
 }
 
@@ -263,9 +275,8 @@ header {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.catalog-item h3 {
+.catalog-item h2 {
   margin: 10px 0;
-  font-size: 1.1em;
 }
 
 .catalog-item a:hover img {
@@ -290,7 +301,7 @@ header {
   }
 
   .catalog-item img {
-      max-width: 100%;
+      max-width: 250px;
   }
 }
 
@@ -299,9 +310,6 @@ header {
       padding: 10px;
   }
 
-  .catalog-item h3 {
-      font-size: 1em;
-  }
 }
 
 @media (max-width: 576px) {
@@ -310,8 +318,8 @@ header {
       gap: 10px;
   }
 
-  .catalog-item h3 {
-      font-size: 0.9em;
+  .catalog-item h2 {
+      font-size: 1.5em;
   }
 }
 
@@ -603,3 +611,67 @@ form {
     color: #000000;
 }
 /* end card */
+
+/* about */
+
+.container_about {
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 20px 60px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* end about */
+
+/* navigation */
+
+.button-container {
+    display: flex;
+    gap: 20px; /* Расстояние между кнопками */
+    justify-content: center;
+}
+
+.round-button {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 25px;
+    border-radius: 50%;
+    background-color: #585858;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.round-button:hover {
+    background-color: #787878;
+}
+
+.round-button:active {
+    background-color: #787878;
+}
+
+.page-num-selected {
+    background-color: #b5b5b5; /* Цвет для выбранной кнопки */
+    cursor: default; /* Курсор не меняется */
+    pointer-events: none; /* Отключить возможность клика */
+}
+
+@media (max-width: 576px) {
+    .button-container {
+        gap: 5px; /* Расстояние между кнопками */
+    }
+    
+    .round-button {
+        width: 40px;
+        height: 40px;
+    }
+
+  }
+
+
+

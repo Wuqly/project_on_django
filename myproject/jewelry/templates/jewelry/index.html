@@ -10,8 +10,8 @@
                 <a href="{{ el.get_absolute_url }}"><img src="{{ el.image.url }}" alt="Photo"></a>
             {% endif %}
             <div class="description">
-                <a href="{{ el.get_absolute_url }}"><h3>{{el.title|upper}}</h3></a>
-                <p>{{el.type}} {{el.quantity}} шт.</p>
+                <a href="{{ el.get_absolute_url }}"><h2>{{el.title|upper}}</h2></a>
+                    <p>{{el.type}} {{el.quantity}} шт.</p>
                 <p>Цена: {{el.price}} ₽</p>
             </div>
         </div>
@@ -20,3 +20,27 @@
     {% endfor %}
 </div>
 {% endblock %}
+
+{% block navigation %}
+{% if page_obj.has_other_pages %}
+<div class="button-container">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}"><button class="round-button">&lt;</button></a>
+    {% endif %}
+
+    {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+            <button class="round-button page-num-selected">{{ p }}</button>
+        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+            <a href="?page={{ p }}"><button class="round-button">{{ p }}</button></a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"><button class="round-button">&gt;</button></a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}
+
+

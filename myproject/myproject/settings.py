@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'jewelry.apps.JewelryConfig',
     'debug_toolbar',
+    'jewelry.apps.JewelryConfig',
+    'users.apps.JewelryConfig',
 ]
 
 MIDDLEWARE = [
