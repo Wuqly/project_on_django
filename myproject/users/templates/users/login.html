@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+
+<div class="container_login forms">
+    <div class="form login">
+        <div class="form-content">
+            <h1>Вход</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{next}}"/>
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                {% if f.label == 'Пароль' %}
+                <div class="field input-field">
+                    <p><label class="form-label" for="{{f.id_for_label}}">{{f.label}}</label>{{f}}</p>
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+                {% else %}
+                <div class="field input-field">
+                    <p><label class="form-label" for="{{f.id_for_label}}">{{f.label}}</label>{{f}}</p>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="form-link">
+                    <a href="{% url 'users:password_reset' %}" class="forgot-pass">Забыли пароль?</a>
+                </div>
+                <div class="field button-field">
+                    <button type="submit">Войти</button>
+                </div>
+            </form>
+            <div class="form-link">
+                <span>Нет аккаунта? <a href="{% url 'users:register' %}" class="link signup-link">Зарегистрироваться</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

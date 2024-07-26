@@ -14,24 +14,40 @@
 <header>
     <a class="logo" href="{% url 'home' %}"><img src="{% static 'jewelry/images/logo2.png' %}" alt="Логотип" width="10%"></a>
     <nav class="navigation">
-        {% for m in menu %}
-            {% if m.url_name == 'catalog' %}
+
+        {% for m in mainmenu %}
+            {% if m.url_name == 'catalog'%}
                 <div class="dropdown">
-                    <a class="btn" href="{{m.url_name}}">{{ m.title }}</a>
+                    <a class="btn" href="{% url m.url_name %}">{{ m.title }}</a>
                     <div class="dropdown-content">
                         {% show_catalog %}
                     </div>
                 </div>
-            {% else %}
-                <a class="btn" href="{{m.url_name}}">{{ m.title }}</a>
+           
+            {%else%}
+                
+            <a class="btn" href="{% url m.url_name %}">{{ m.title }}</a>
+
             {% endif %}
         {% endfor %}
+
+        {% if user.is_authenticated %}
+            {% if user.is_staff %}
+                <a href="{% url 'add_product' %}" class="btn">Добавить товар</a>
+            {% endif %}
+            <a href="{% url 'users:profile' %}" class="profile">{{ user.username }} | </a>
+            <a class="btnLogin" href="{% url 'users:logout' %}">&nbsp;Выйти</a>
+        {% else %}
+            <a class="btn" href="{% url 'users:login' %}">Войти</a>
+        {% endif %}
+
     </nav>
 </header>
 
 <body>
 
     {% block content %} {% endblock %}
+    
 
     {% block navigation %} {% endblock %}
 

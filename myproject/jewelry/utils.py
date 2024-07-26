@@ -4,9 +4,8 @@ catalog = Types.objects.all()
 
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Каталог', 'url_name': 'catalog'},
-        {'title': 'Добавить товар', 'url_name': 'add_product'},
         {'title': 'Обратная связь', 'url_name': 'contact'},
-        {'title': 'Войти', 'url_name': 'login'}]
+]
 
 class DataMixin:
     paginate_by = 3

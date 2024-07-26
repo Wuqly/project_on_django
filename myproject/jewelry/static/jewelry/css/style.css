@@ -21,7 +21,7 @@ body {
     grid-template-columns: repeat(3, 350px);
     justify-content: center;
     justify-items: center;
-    min-height: calc(100vh - 192px);
+    min-height: calc(100vh - 235px);
     padding: 20px 60px;
     gap: 20px;
 }
@@ -87,11 +87,29 @@ header .logo {
 
 .navigation .btn {
     position: relative;
-    font-size: 1.4em;
+    font-size: 1.1em;
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-weight: 500;
     margin-inline: 30px;
+}
+
+.navigation .btnLogin{
+    position: relative;
+    font-size: 1.1em;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+.navigation .profile{
+    position: relative;
+    font-size: 1.1em;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 30px;
 }
 
 .navigation .btn::after {
@@ -108,7 +126,71 @@ header .logo {
     transition: transform .2s;
 }
 
+.navigation .btn .btnLogin::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 3px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform .2s;
+}
+
+.navigation .btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 3px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform .2s;
+}
+
+.navigation .btnLogin::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 3px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform .2s;
+}
+
+.navigation .profile::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 3px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform .2s;
+}
+
+.navigation .profile:hover::after {
+    transform: scaleX(1);
+}
+
 .navigation .btn:hover::after {
+    transform: scaleX(1);
+}
+
+.navigation .btnLogin:hover::after {
     transform: scaleX(1);
 }
 
@@ -134,7 +216,7 @@ header .logo {
     text-decoration: none;
     display: block;
     width: 100%;
-    font-size: 1.4em;
+    font-size: 1.1em;
 }
 
 .dropdown-content .btnSpisok:hover {
@@ -202,6 +284,18 @@ header {
 }
 
 .navigation .btn {
+    margin-inline: 30px;
+    margin-bottom: 5px;
+    
+}
+
+.navigation .profile {
+    margin-inline: 30px;
+    margin-bottom: 5px;
+    
+}
+
+.navigation .btnLogin {
     margin-inline: 30px;
     margin-bottom: 5px;
     
@@ -330,10 +424,10 @@ header {
     display: flex;
     justify-content: center;
     min-height: calc(100vh - 0px);
-    padding: 20px 60px;
+    padding: 0px 60px;
 }
 
-.form {
+.form{
     position: absolute;
     max-width: 430px;
     width: 100%;
@@ -341,40 +435,20 @@ header {
     background: #FFF;
 }
 
-.form.signup {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.forms.show-signup .form.signup {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.forms.show-signup .form.login {
-    opacity: 0;
-    pointer-events: none;
-}
-
-h1 {
+h1{
     text-align: center;
 }
-
-form {
+/* form{
     margin-top: 30px;
-    width: 600px;
-}
-
-.form .field {
+} */
+.form .field{
     position: relative;
-    height: 50px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 8px;
     border-radius: 6px;
 }
-
 .field input,
-.field button {
+.field button{
     height: 100%;
     width: 100%;
     border: none;
@@ -382,69 +456,61 @@ form {
     font-weight: 400;
     border-radius: 6px;
 }
-
-.field input {
+.field input{
     outline: none;
     padding: 0 15px;
-    border: 1px solid #CACACA;
+    border: 1px solid#CACACA;
+    height: 40px;
 }
-
-.field input:focus {
+.field input:focus{
     border-bottom-width: 2px;
 }
-
-.eye-icon {
+.eye-icon{
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    font-size: 18px;
+    font-size: 20px;
     color: #8b8b8b;
     cursor: pointer;
     padding: 5px;
+    margin-top: 12px;
 }
-
-.field button {
+.field button{
     color: #fff;
     background-color: #0171d3;
     transition: all 0.3s ease;
     cursor: pointer;
+    height: 40px;
 }
-
-.field button:hover {
+.field button:hover{
     background-color: #016dcb;
 }
-
-.form-link {
+.form-link{
     text-align: center;
     margin-top: 10px;
 }
-
 .form-link span,
-.form-link a {
+.form-link a{
     font-size: 14px;
     font-weight: 400;
     color: #232836;
 }
-
-.form a {
+.form a{
     color: #0171d3;
     text-decoration: none;
 }
-
-.form-content a:hover {
+.form-content a:hover{
     text-decoration: underline;
 }
-
-.line {
+.line{
     position: relative;
     height: 1px;
     width: 100%;
     margin: 36px 0;
     background-color: #d4d4d4;
 }
-
-.line::before {
+.line::before{
     content: 'Or';
     position: absolute;
     top: 50%;
@@ -454,48 +520,10 @@ form {
     color: #8b8b8b;
     padding: 0 15px;
 }
-
-.media-options a {
+.media-options a{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* add_product */
-.container_add_product {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    min-height: calc(100vh - 0px);
-    padding: 20px 60px;
-}
-
-.container_add_product p {
-    margin-bottom: 10px;
-}
-
-.form-input {
-    width: 100%;
-    max-width: 450px;
-    font-size: 16px;
-}
-
-.form-label {
-    display: inline-block;
-    min-width: 150px;
-    vertical-align: top;
-}
-
-.form-error ul {
-    list-style: none;
-    padding: 0;
-    color: #CC0000;
-}
-
-.form-button {
-    width: 100%;
-    max-width: 200px;
-    font-size: 16px;
 }
 
 /* Footer */
@@ -673,5 +701,50 @@ form {
 
   }
 
+/* register_done */
 
+.container_reg_done{
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 20px 60px;
+    flex-direction: column;
+    align-items: center;
+}
 
+/* end register_done */
+
+/* permission_denied */
+
+.container_perm_denied{
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 20px 60px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* profile */
+
+.container_profile{
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 20px 60px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* end profile */
+
+/* end permission_denied */
+
+/* form-error */
+
+.form-content .form-error {
+    color: red;
+    font-size: 1em;  /* Дополнительный стиль для размера текста */
+}
+
+/* end form error */

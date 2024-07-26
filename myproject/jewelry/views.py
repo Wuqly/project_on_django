@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.shortcuts import render, redirect, get_object_or_404 
 from django.urls import reverse, reverse_lazy
 from django.template.loader import render_to_string
@@ -86,13 +87,23 @@ def contact(request):
 
 def login(request):
     return render(request, 'jewelry/sign.html', { 'title': 'Авторизация'})
-    
 
-class AddProduct(DataMixin,CreateView):
+
+    
+class AddProduct(LoginRequiredMixin,UserPassesTestMixin,DataMixin,CreateView):
     form_class = AddJewelryForm
     template_name = 'jewelry/add_product.html'
     title_page = 'Добавление товара'
+    login_url = 'users:login'  # URL для перенаправления неавторизованных пользователей
+    redirect_field_name = 'next' 
 
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def handle_no_permission(self):
+        if not self.request.user.is_authenticated:
+            return redirect(self.request.get_full_path(), self.login_url, self.redirect_field_name)
+        return render(self.request, 'jewelry/permission_denied.html')
 
 class UpdateProduct(DataMixin, UpdateView):
     model = Jewelry

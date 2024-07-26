@@ -37,6 +37,7 @@ class Jewelry(models.Model):
     is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
                                     default=Status.DRAFT, verbose_name='Статус')
 
+    
 
     objects = models.Manager()
     published = PublishedManadger()

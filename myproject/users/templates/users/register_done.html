@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+
+<div class="container_reg_done">
+    <h1>Добро пожаловать</h1>
+
+    <p>Вы успешно зарегестрировались на сайте! Для входа в систему необходимо авторизоваться по этой <a href="{% url 'users:login' %}">ссылке</a></p>
+
+
+</div>
+
+
+
+{% endblock %}
