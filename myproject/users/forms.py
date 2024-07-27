@@ -48,6 +48,6 @@ class ProfileUserForm(forms.ModelForm):
 
 
 class UserPassChageForm(PasswordChangeForm):
-    old_password = forms.CharField(label='Старый пароль')
-    new_password1 = forms.CharField(label='Новый пароль')
-    new_password2 = forms.CharField(label='Подтверждение пароля')
+    old_password = forms.CharField(label='Старый пароль', widget=forms.PasswordInput())
+    new_password1 = forms.CharField(label='Новый пароль', widget=forms.PasswordInput())
+    new_password2 = forms.CharField(label='Подтверждение пароля', widget=forms.PasswordInput())

@@ -46,11 +46,21 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset = None):
         return self.request.user
     
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if get_user_model().objects.filter(email=email).exists():
-            raise forms.ValidationError('Такой Email уже существует')
-        return email
+    def form_valid(self, form):
+        user = self.request.user
+        username = form.cleaned_data.get('username')
+        email = form.cleaned_data.get('email')
+        
+        if get_user_model().objects.filter(username=username).exclude(pk=user.pk).exists():
+            form.add_error('username', 'Пользователь с таким именем уже существует.')
+        
+        if get_user_model().objects.filter(email=email).exclude(pk=user.pk).exists():
+            form.add_error('email', 'Пользователь с таким email уже существует.')
+        
+        if form.errors:
+            return self.form_invalid(form)
+        
+        return super().form_valid(form)
     
 
 class UserPasswordChange(PasswordChangeView):

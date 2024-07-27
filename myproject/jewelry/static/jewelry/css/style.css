@@ -21,7 +21,7 @@ body {
     grid-template-columns: repeat(3, 350px);
     justify-content: center;
     justify-items: center;
-    min-height: calc(100vh - 235px);
+    min-height: calc(100vh - 0px);
     padding: 20px 60px;
     gap: 20px;
 }
@@ -314,12 +314,12 @@ header {
         margin-inline: 0;
     }
 
-    .container_login, .container_add_product, .jewelry-container {
+    .container_login, .jewelry-container {
         padding: 20px;
     }
 
     .form {
-        padding: 20px 10px;
+        padding: 0px 10px;
     }
 
     .form-input, .form-button {
@@ -327,10 +327,6 @@ header {
         font-size: 16px;
     }
 
-    .form-label {
-        display: block;
-        margin-bottom: 5px;
-    }
 
     .jewelry-item {
         flex-direction: column;
@@ -428,7 +424,7 @@ header {
 }
 
 .form{
-    position: absolute;
+    position: relative;
     max-width: 430px;
     width: 100%;
     border-radius: 6px;
@@ -447,6 +443,7 @@ h1{
     margin-top: 8px;
     border-radius: 6px;
 }
+
 .field input,
 .field button{
     height: 100%;
@@ -467,7 +464,7 @@ h1{
 }
 .eye-icon{
     position: absolute;
-    top: 50%;
+    top: 33px;
     right: 10px;
     transform: translateY(-50%);
     font-size: 20px;
@@ -478,13 +475,14 @@ h1{
 }
 .field button{
     color: #fff;
-    background-color: #0171d3;
+    background-color: #585858;
     transition: all 0.3s ease;
     cursor: pointer;
     height: 40px;
+    margin-top: 10px;
 }
 .field button:hover{
-    background-color: #016dcb;
+    background-color: #6e6e6e;
 }
 .form-link{
     text-align: center;
@@ -701,29 +699,17 @@ h1{
 
   }
 
-/* register_done */
 
-.container_reg_done{
+.container_add_product{
     position: relative;
     display: flex;
     min-height: calc(100vh - 0px);
-    padding: 20px 60px;
+    padding: 0px 60px;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 100px;
 }
 
-/* end register_done */
-
-/* permission_denied */
-
-.container_perm_denied{
-    position: relative;
-    display: flex;
-    min-height: calc(100vh - 0px);
-    padding: 20px 60px;
-    flex-direction: column;
-    align-items: center;
-}
 
 /* profile */
 
@@ -731,14 +717,50 @@ h1{
     position: relative;
     display: flex;
     min-height: calc(100vh - 0px);
-    padding: 20px 60px;
+    padding: 0px 60px;
     flex-direction: column;
     align-items: center;
 }
 
 /* end profile */
 
-/* end permission_denied */
+/* container_password_forms */
+
+.container_password_forms{
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 0px 60px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* end container_password_forms */
+
+/* container_perm_denied */
+
+.container_perm_denied{
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 0px 60px;
+    flex-direction: column;
+    align-items: center;
+}
+/* end container_perm_denied */
+
+/* container_reg_done */
+
+.container_reg_done{
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 0px);
+    padding: 0px 60px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* end container_reg_done */
 
 /* form-error */
 
